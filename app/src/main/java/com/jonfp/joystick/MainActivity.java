@@ -3,10 +3,12 @@ package com.jonfp.joystick;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DownloadManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
@@ -16,6 +18,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+    }
+
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+
+        EditText ipEditText = findViewById(R.id.ipEditText);
+        String ip = ipEditText.getText().toString();
+
+        EditText passEditText = findViewById(R.id.passEditText);
+        String pass = passEditText.getText().toString();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("savedValues",MODE_PRIVATE);
+
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+        myEdit.putString("ip", ip);
+        myEdit.putString("pass", pass);
+
+        myEdit.commit();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EditText ipEditText = findViewById(R.id.ipEditText);
+        EditText passEditText = findViewById(R.id.passEditText);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("savedValues", MODE_PRIVATE);
+
+        ipEditText.setText(sharedPreferences.getString("ip", ""));
+        passEditText.setText(sharedPreferences.getString("pass", ""));
 
     }
 
