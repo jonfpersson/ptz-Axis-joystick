@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainCardActivity"
+    >
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        style="@android:style/Widget.Holo.DropDownItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/linlay"
+        android:layout_alignBottom="@+id/linlay"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:clickable="true"
+        card_view:backgroundTint="#BFBDBD"
+        card_view:srcCompat="@android:drawable/ic_input_add"
+        tools:ignore="SpeakableTextPresentCheck"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/linlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F6F6F5"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="PTZ Cameras"
+            android:textSize="@dimen/textHeaderSize"
+            android:typeface="sans" />
+
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="@dimen/cardSpacingHorizontal"
+            android:layout_marginTop="@dimen/cardSpacingVertical"
+            android:layout_marginEnd="@dimen/cardSpacingHorizontal"
+            card_view:cardCornerRadius="30dp">
+
+            <TextView
+                android:id="@+id/info_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/cardSpacingVertical"
+                android:layout_marginTop="15dp"
+                android:text="V5938"
+                android:textSize="@dimen/textSize"
+                android:typeface="sans" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view2"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="@dimen/cardSpacingHorizontal"
+            android:layout_marginTop="@dimen/cardSpacingVertical"
+            android:layout_marginEnd="@dimen/cardSpacingHorizontal"
+            card_view:cardBackgroundColor="#FFFFFF"
+            card_view:cardCornerRadius="30dp">
+
+            <TextView
+                android:id="@+id/info_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/cardSpacingVertical"
+                android:layout_marginTop="15dp"
+                android:text="V5938"
+                android:textSize="@dimen/textSize"
+                android:typeface="sans" />
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

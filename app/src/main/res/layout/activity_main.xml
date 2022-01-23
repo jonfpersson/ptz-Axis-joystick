@@ -28,58 +28,20 @@
             android:id="@+id/setPan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="344dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="228dp"
             android:onClick="sendPan"
             android:text="Set"
 
             app:layout_constraintStart_toEndOf="@+id/absPan"
             app:layout_constraintTop_toBottomOf="@+id/btnDown" />
 
-        <Button
-            android:id="@+id/setTilt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="72dp"
-            android:onClick="sendTilt"
-
-            android:text="Set"
-            app:layout_constraintStart_toEndOf="@+id/absTilt"
-            app:layout_constraintTop_toBottomOf="@+id/setPan" />
-
-        <EditText
-            android:id="@+id/customCGI"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="156dp"
-            android:ems="10"
-            android:hint="Enter custom cgi param"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/absPan" />
-
-        <EditText
-            android:id="@+id/absPan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="392dp"
-            android:ems="10"
-            android:hint="Enter absolute pan"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLeft" />
-
         <EditText
             android:id="@+id/absTilt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
             android:ems="10"
             android:hint="Enter absolute tilt"
             android:inputType="textPersonName"
@@ -88,15 +50,53 @@
             app:layout_constraintTop_toBottomOf="@+id/absPan" />
 
         <Button
+            android:id="@+id/setTilt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:onClick="sendTilt"
+
+            android:text="Set"
+            app:layout_constraintStart_toEndOf="@+id/absTilt"
+            app:layout_constraintTop_toBottomOf="@+id/setPan" />
+
+        <Button
             android:id="@+id/setTilt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="156dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
             android:onClick="sendCustom"
             android:text="Set"
             app:layout_constraintStart_toEndOf="@+id/customCGI"
-            app:layout_constraintTop_toBottomOf="@+id/setPan" />
+            app:layout_constraintTop_toBottomOf="@+id/setTilt" />
+
+        <EditText
+            android:id="@+id/customCGI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:hint="E.g zoom=500"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/absTilt" />
+
+        <EditText
+            android:id="@+id/absPan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="276dp"
+            android:ems="10"
+            android:hint="Enter absolute pan"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnLeft" />
 
         <Button
             android:id="@+id/btnLeft"
@@ -158,12 +158,12 @@
         <Button
             android:id="@+id/btnZoomIn"
             android:layout_width="114dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="32dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
             android:onClick="zoomIn"
             android:text="Zoom in"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnDown" />
 
@@ -186,6 +186,7 @@
             android:ems="10"
             android:hint="Enter PTZ password"
             android:inputType="textPassword"
+            android:minHeight="48dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ipEditText" />
 
