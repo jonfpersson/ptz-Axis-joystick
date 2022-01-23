@@ -9,3 +9,6 @@ Out of the box the app supports:
 * Custom PTZ cgi
 
 If this project is used, please cite me and the project as source.
+
+## Credits
+<a href="https://www.flaticon.com/free-icons/security-camera" title="security camera icons">Security camera icons created by Freepik - Flaticon</a>
