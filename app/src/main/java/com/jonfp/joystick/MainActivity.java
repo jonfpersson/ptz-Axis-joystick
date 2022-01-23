@@ -2,13 +2,10 @@ package com.jonfp.joystick;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DownloadManager;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
@@ -33,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         String pass = passEditText.getText().toString();
 
         SharedPreferences sharedPreferences = getSharedPreferences("savedValues",MODE_PRIVATE);
-
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
         myEdit.putString("ip", ip);
@@ -53,10 +49,12 @@ public class MainActivity extends AppCompatActivity {
         ipEditText.setText(sharedPreferences.getString("ip", ""));
         passEditText.setText(sharedPreferences.getString("pass", ""));
 
+
     }
 
     public void sendUp(View view){
         sendCGI("move=up");
+
     }
 
     public void sendLeft(View view){
@@ -92,13 +90,20 @@ public class MainActivity extends AppCompatActivity {
         sendCGI(cus);
     }
 
+    public void zoomIn(View view){
+        sendCGI("rzoom=" + "+200");
+    }
+
+    public void zoomOut(View view){
+        sendCGI("rzoom=" + "-200");
+    }
+
     public void sendCGI(String params){
         EditText ipEditText = findViewById(R.id.ipEditText);
         String ip = ipEditText.getText().toString();
 
         EditText passEditText = findViewById(R.id.passEditText);
         String pass = passEditText.getText().toString();
-
 
         if(ip != ""){
             String webPage = "http://" + ip + "/axis-cgi/com/ptz.cgi?" + params;
@@ -116,6 +121,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }
