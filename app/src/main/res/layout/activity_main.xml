@@ -9,20 +9,54 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/ic_launcher_background"
         tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+
+            android:layout_marginTop="50dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon" />
 
         <EditText
             android:id="@+id/ipEditText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:ems="10"
+
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="32dp"
+
             android:hint="Enter ip"
             android:inputType="textPersonName"
-            android:minHeight="48dp"
+
+            android:minHeight="50dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <EditText
+            android:id="@+id/passEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="32dp"
+
+            android:hint="Enter PTZ password"
+            android:inputType="textPassword"
+            android:minHeight="50dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ipEditText" />
+
 
         <Button
             android:id="@+id/setPan"
@@ -102,43 +136,38 @@
             android:id="@+id/btnLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
+
+            android:layout_marginStart="65dp"
             android:onClick="sendLeft"
             android:text="Left"
-            app:layout_constraintBottom_toTopOf="@+id/btnDown"
-            app:layout_constraintEnd_toStartOf="@+id/btnDown"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnUp"
-            app:layout_constraintVertical_bias="0.0"
 
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnUp" />
 
         <Button
             android:id="@+id/btnUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="140dp"
             android:onClick="sendUp"
             android:text="Up"
             app:layout_constraintEnd_toEndOf="@+id/btnDown"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/btnDown"
-            app:layout_constraintTop_toBottomOf="@+id/ipEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/ipEditText"
+
+            />
 
         <Button
             android:id="@+id/btnRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="68dp"
+
+            android:layout_marginEnd="65dp"
             android:onClick="sendRight"
+
             android:text="Right"
 
-            app:layout_constraintBottom_toTopOf="@+id/btnDown"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnDown"
             app:layout_constraintTop_toBottomOf="@+id/btnUp" />
 
         <Button
@@ -146,49 +175,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
-            android:layout_marginEnd="8dp"
+
             android:onClick="sendDown"
 
             android:text="Down"
-            app:layout_constraintEnd_toEndOf="@+id/btnZoomIn"
-            app:layout_constraintStart_toStartOf="@+id/btnZoomIn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnUp" />
 
 
         <Button
             android:id="@+id/btnZoomIn"
-            android:layout_width="114dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+
+            android:layout_marginEnd="65dp"
             android:onClick="zoomIn"
             android:text="Zoom in"
+
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnDown" />
+            app:layout_constraintStart_toStartOf="@+id/btnRight"
+            app:layout_constraintTop_toTopOf="@+id/btnZoomOut" />
 
         <Button
             android:id="@+id/btnZoomOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="68dp"
             android:onClick="zoomOut"
             android:text="Zoom out"
-            app:layout_constraintStart_toStartOf="@+id/btnZoomIn"
-            app:layout_constraintTop_toBottomOf="@+id/btnZoomIn" />
 
-        <EditText
-            android:id="@+id/passEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:ems="10"
-            android:hint="Enter PTZ password"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
+
+            app:layout_constraintEnd_toEndOf="@+id/btnLeft"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ipEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/btnDown" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
