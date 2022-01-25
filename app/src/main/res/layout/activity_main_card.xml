@@ -19,7 +19,7 @@
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="25dp"
         android:clickable="true"
-        card_view:backgroundTint="@color/darkBlack"
+        card_view:backgroundTint="@color/ic_launcher_background"
         card_view:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="SpeakableTextPresentCheck"
 
@@ -29,7 +29,7 @@
         android:id="@+id/linlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/ic_launcher_background"
+        android:background="@color/darkBlack"
         android:orientation="vertical">
 
 
@@ -38,23 +38,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="PTZ Cameras"
+            android:textColor="@color/ic_launcher_background"
             android:textSize="@dimen/textHeaderSize"
-            android:typeface="sans"
-            android:textColor="@color/darkBlack"
-            />
+            android:typeface="sans" />
 
         <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_marginStart="@dimen/cardSpacingHorizontal"
-            android:layout_marginTop="@dimen/cardSpacingVertical"
+            android:layout_marginTop="70dp"
             android:layout_marginEnd="@dimen/cardSpacingHorizontal"
             android:onClick="openActivity"
-            card_view:cardBackgroundColor="@color/darkBlack"
+            card_view:cardBackgroundColor="@color/ic_launcher_background"
             card_view:cardCornerRadius="30dp">
 
             <TextView
@@ -64,7 +63,7 @@
                 android:layout_marginStart="@dimen/cardSpacingVertical"
                 android:layout_marginTop="15dp"
                 android:text="V5938"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/textSize"
                 android:typeface="sans" />
         </androidx.cardview.widget.CardView>
