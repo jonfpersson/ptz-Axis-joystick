@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Joystick"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".newDeviceActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainCardActivity"
             android:exported="true">
             <intent-filter>

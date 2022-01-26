@@ -7,6 +7,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".MainCardActivity"
 
+
     >
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -22,6 +23,7 @@
         card_view:backgroundTint="@color/ic_launcher_background"
         card_view:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="addNewDevice"
 
         />
 
@@ -45,28 +47,7 @@
             android:textSize="@dimen/textHeaderSize"
             android:typeface="sans" />
 
-        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginStart="@dimen/cardSpacingHorizontal"
-            android:layout_marginTop="70dp"
-            android:layout_marginEnd="@dimen/cardSpacingHorizontal"
-            android:onClick="openActivity"
-            card_view:cardBackgroundColor="@color/ic_launcher_background"
-            card_view:cardCornerRadius="30dp">
 
-            <TextView
-                android:id="@+id/info_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/cardSpacingVertical"
-                android:layout_marginTop="15dp"
-                android:text="V5938"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textSize"
-                android:typeface="sans" />
-        </androidx.cardview.widget.CardView>
 
 
     </LinearLayout>
