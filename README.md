@@ -6,7 +6,9 @@ Out of the box the app supports:
 * Authentication
 * Directional steering
 * Absolute position
+* Zoom controls
 * Custom PTZ cgi
+* A cardview based layout containing cameras
 
 If this project is used, please cite me and the project as source.
 
