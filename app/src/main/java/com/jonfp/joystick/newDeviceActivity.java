@@ -2,12 +2,12 @@ package com.jonfp.joystick;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -26,16 +26,19 @@ public class newDeviceActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 try {
-                    FileOutputStream fOut = openFileOutput("mainLayout.joy",MODE_APPEND);
+                    FileOutputStream fOut = openFileOutput("mainLayout.joy", MODE_APPEND);
 
-                    EditText ipEditText = findViewById(R.id.ipEditText);
+                    EditText ipEditText = findViewById(R.id.ipView);
                     EditText nickEditText = findViewById(R.id.nickEditText);
 
                     String ip = ipEditText.getText().toString();
                     String nickname = nickEditText.getText().toString();
 
-                    fOut.write((ip + ";" + nickname).getBytes());
+                    fOut.write((nickname + ";" + ip + " ").getBytes());
                     fOut.close();
+
+                    Intent intent = new Intent(newDeviceActivity.this, MainCardActivity.class);
+                    startActivity(intent);
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();

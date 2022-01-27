@@ -24,22 +24,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/icon_yellow" />
 
-        <EditText
-            android:id="@+id/ipEditText"
+        <TextView
+            android:id="@+id/ipView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             android:layout_marginStart="32dp"
             android:layout_marginTop="36dp"
             android:layout_marginEnd="32dp"
-
-            android:hint="Enter ip"
-            android:inputType="textPersonName"
-            android:minHeight="50dp"
-
+            android:text="Not Found"
             android:backgroundTint="@color/ic_launcher_background"
-            android:textColorHint="@color/softGrey"
-            android:textColor="@color/white"
+            android:textColor="@color/softGrey"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -60,7 +56,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ipEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/ipView" />
 
 
         <Button
@@ -176,7 +172,7 @@
             android:backgroundTint="@color/ic_launcher_background"
             app:layout_constraintEnd_toEndOf="@+id/btnDown"
             app:layout_constraintStart_toStartOf="@+id/btnDown"
-            app:layout_constraintTop_toBottomOf="@+id/ipEditText"
+            app:layout_constraintTop_toBottomOf="@+id/ipView"
 
 
             />

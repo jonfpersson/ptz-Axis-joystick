@@ -2,19 +2,25 @@ package com.jonfp.joystick;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
-
+    public String recievedIp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        recievedIp = getIntent().getStringExtra("IP-ADRESS");
+        TextView ipView = findViewById(R.id.ipView);
+
+        if(recievedIp != null)
+            ipView.setText(recievedIp);
 
     }
 
@@ -23,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onPause();
 
-        EditText ipEditText = findViewById(R.id.ipEditText);
+       /* EditText ipEditText = findViewById(R.id.ipEditText);
         String ip = ipEditText.getText().toString();
 
         EditText passEditText = findViewById(R.id.passEditText);
@@ -35,20 +41,20 @@ public class MainActivity extends AppCompatActivity {
         myEdit.putString("ip", ip);
         myEdit.putString("pass", pass);
 
-        myEdit.commit();
+        myEdit.commit();*/
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        EditText ipEditText = findViewById(R.id.ipEditText);
+        /*EditText ipEditText = findViewById(R.id.ipEditText);
         EditText passEditText = findViewById(R.id.passEditText);
 
         SharedPreferences sharedPreferences = getSharedPreferences("savedValues", MODE_PRIVATE);
 
         ipEditText.setText(sharedPreferences.getString("ip", ""));
         passEditText.setText(sharedPreferences.getString("pass", ""));
-
+*/
 
     }
 
@@ -99,14 +105,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendCGI(String params){
-        EditText ipEditText = findViewById(R.id.ipEditText);
-        String ip = ipEditText.getText().toString();
 
         EditText passEditText = findViewById(R.id.passEditText);
         String pass = passEditText.getText().toString();
 
-        if(ip != ""){
-            String webPage = "http://" + ip + "/axis-cgi/com/ptz.cgi?" + params;
+        if(recievedIp != ""){
+            String webPage = "http://" + recievedIp + "/axis-cgi/com/ptz.cgi?" + params;
 
             String result;
             HttpGetRequest getRequest = new HttpGetRequest();
