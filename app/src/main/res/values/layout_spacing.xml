@@ -4,5 +4,9 @@
     <dimen name="cardSpacingHorizontal">30dp</dimen>
     <dimen name="textSize">20sp</dimen>
     <dimen name="textHeaderSize">25sp</dimen>
+    <dimen name="generalSpacing">65dp</dimen>
+    <dimen name="zoomButtonWidth">90dp</dimen>
+    <dimen name="zoomButtonHeight">70dp</dimen>
+    <dimen name="setButtonSpacing">32dp</dimen>
 
 </resources>

@@ -9,18 +9,20 @@ import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends AppCompatActivity {
+public class SteerActivity extends AppCompatActivity {
     public String recievedIp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_steer);
 
         recievedIp = getIntent().getStringExtra("IP-ADRESS");
         TextView ipView = findViewById(R.id.ipView);
 
         if(recievedIp != null)
             ipView.setText(recievedIp);
+
+
 
     }
 
@@ -47,14 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        /*EditText ipEditText = findViewById(R.id.ipEditText);
-        EditText passEditText = findViewById(R.id.passEditText);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("savedValues", MODE_PRIVATE);
-
-        ipEditText.setText(sharedPreferences.getString("ip", ""));
-        passEditText.setText(sharedPreferences.getString("pass", ""));
-*/
 
     }
 

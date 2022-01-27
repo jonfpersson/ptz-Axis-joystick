@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/darkBlack"
-        tools:context=".MainActivity">
+        tools:context=".SteerActivity">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="150dp"
             android:layout_height="150dp"
 
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="@dimen/generalSpacing"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,9 +44,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="@dimen/setButtonSpacing"
+            android:layout_marginTop="@dimen/setButtonSpacing"
+            android:layout_marginEnd="@dimen/setButtonSpacing"
 
             android:hint="Enter PTZ password"
             android:inputType="textPassword"
@@ -63,27 +63,29 @@
             android:id="@+id/setPan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="228dp"
             android:onClick="sendPan"
+
             android:text="Set"
             android:textColor="@color/black"
             android:backgroundTint="@color/ic_launcher_background"
+
+            android:layout_marginStart="@dimen/setButtonSpacing"
+            android:layout_marginTop="228dp"
             app:layout_constraintStart_toEndOf="@+id/absPan"
             app:layout_constraintTop_toBottomOf="@+id/btnDown" />
-
-
 
         <Button
             android:id="@+id/setTilt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
             android:onClick="sendTilt"
-            android:backgroundTint="@color/ic_launcher_background"
+
             android:text="Set"
+            android:backgroundTint="@color/ic_launcher_background"
             android:textColor="@color/black"
+
+            android:layout_marginStart="@dimen/setButtonSpacing"
+            android:layout_marginTop="@dimen/setButtonSpacing"
             app:layout_constraintStart_toEndOf="@+id/absTilt"
             app:layout_constraintTop_toBottomOf="@+id/setPan" />
 
@@ -91,12 +93,14 @@
             android:id="@+id/setTilt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
             android:onClick="sendCustom"
+
             android:text="Set"
             android:textColor="@color/black"
             android:backgroundTint="@color/ic_launcher_background"
+
+            android:layout_marginStart="@dimen/setButtonSpacing"
+            android:layout_marginTop="@dimen/setButtonSpacing"
             app:layout_constraintStart_toEndOf="@+id/customCGI"
             app:layout_constraintTop_toBottomOf="@+id/setTilt" />
 
@@ -104,15 +108,18 @@
             android:id="@+id/customCGI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:ems="10"
             android:hint="E.g zoom=500"
             android:backgroundTint="@color/ic_launcher_background"
             android:textColorHint="@color/softGrey"
             android:textColor="@color/white"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/absTilt" />
 
@@ -120,15 +127,17 @@
             android:id="@+id/absTilt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:ems="10"
             android:backgroundTint="@color/ic_launcher_background"
             android:textColorHint="@color/softGrey"
             android:textColor="@color/white"
             android:hint="Enter absolute tilt"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/absPan" />
 
@@ -136,15 +145,18 @@
             android:id="@+id/absPan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="276dp"
+
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:ems="10"
             android:hint="Enter absolute pan"
             android:backgroundTint="@color/ic_launcher_background"
             android:textColorHint="@color/softGrey"
             android:textColor="@color/white"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="276dp"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnLeft" />
 
@@ -152,12 +164,13 @@
             android:id="@+id/btnLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_marginStart="65dp"
             android:onClick="sendLeft"
+
             android:text="Left"
             android:textColor="@color/black"
             android:backgroundTint="@color/ic_launcher_background"
+
+            android:layout_marginStart="@dimen/generalSpacing"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnUp" />
 
@@ -165,28 +178,28 @@
             android:id="@+id/btnUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
             android:onClick="sendUp"
+
             android:text="Up"
             android:textColor="@color/black"
             android:backgroundTint="@color/ic_launcher_background"
+
+            android:layout_marginTop="@dimen/generalSpacing"
             app:layout_constraintEnd_toEndOf="@+id/btnDown"
             app:layout_constraintStart_toStartOf="@+id/btnDown"
-            app:layout_constraintTop_toBottomOf="@+id/ipView"
-
-
-            />
+            app:layout_constraintTop_toBottomOf="@+id/passEditText" />
 
         <Button
             android:id="@+id/btnRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_marginEnd="65dp"
             android:onClick="sendRight"
-            android:textColor="@color/black"
+
             android:text="Right"
+            android:textColor="@color/black"
             android:backgroundTint="@color/ic_launcher_background"
+
+            android:layout_marginEnd="@dimen/generalSpacing"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnUp" />
 
@@ -194,11 +207,13 @@
             android:id="@+id/btnDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:textColor="@color/black"
             android:onClick="sendDown"
-            android:backgroundTint="@color/ic_launcher_background"
+
             android:text="Down"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/ic_launcher_background"
+
+            android:layout_marginTop="52dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnUp" />
@@ -206,28 +221,32 @@
 
         <Button
             android:id="@+id/btnZoomIn"
-            android:layout_width="90dp"
-            android:layout_height="70dp"
-            android:textColor="@color/black"
-            android:layout_marginEnd="65dp"
+            android:layout_width="@dimen/zoomButtonWidth"
+            android:layout_height="@dimen/zoomButtonHeight"
             android:onClick="zoomIn"
+
             android:text="Zoom in"
+            android:textColor="@color/black"
             android:backgroundTint="@color/ic_launcher_background"
+
+            android:layout_marginEnd="@dimen/generalSpacing"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/btnRight"
             app:layout_constraintTop_toTopOf="@+id/btnZoomOut" />
 
         <Button
             android:id="@+id/btnZoomOut"
-            android:layout_width="90dp"
-            android:layout_height="70dp"
-            android:textColor="@color/black"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="68dp"
+            android:layout_width="@dimen/zoomButtonWidth"
+            android:layout_height="@dimen/zoomButtonHeight"
             android:onClick="zoomOut"
-            android:text="Zoom out"
 
+            android:text="Zoom out"
+            android:textColor="@color/black"
             android:backgroundTint="@color/ic_launcher_background"
+
+            android:layout_marginStart="@dimen/generalSpacing"
+            android:layout_marginTop="@dimen/generalSpacing"
+
             app:layout_constraintEnd_toEndOf="@+id/btnLeft"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnDown" />

@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Joystick"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".newDeviceActivity"
-            android:exported="false" />
 
         <activity
             android:name=".MainCardActivity"
@@ -28,7 +25,11 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".newDeviceActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SteerActivity"
             android:exported="false"
         />
     </application>

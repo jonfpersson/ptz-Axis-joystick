@@ -1,12 +1,9 @@
 package com.jonfp.joystick;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,12 +12,8 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -56,7 +49,7 @@ public class MainCardActivity extends AppCompatActivity {
 
 
     public void openActivity (View view){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, SteerActivity.class);
         intent.putExtra(EXTRA_MESSAGE, "Opening activity");
         startActivity(intent);
     }
@@ -86,7 +79,7 @@ public class MainCardActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainCardActivity.this, MainActivity.class);
+                Intent intent = new Intent(MainCardActivity.this, SteerActivity.class);
                 intent.putExtra("IP-ADRESS", ip);
                 intent.putExtra("NICKNAME", name);
                 startActivity(intent);
