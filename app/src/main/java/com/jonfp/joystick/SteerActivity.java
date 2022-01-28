@@ -1,12 +1,17 @@
 package com.jonfp.joystick;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.security.crypto.EncryptedSharedPreferences;
+import androidx.security.crypto.MasterKeys;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.concurrent.ExecutionException;
 
 public class SteerActivity extends AppCompatActivity {
@@ -22,35 +27,25 @@ public class SteerActivity extends AppCompatActivity {
         if(recievedIp != null)
             ipView.setText(recievedIp);
 
+        try {
+
+            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
+            SharedPreferences sharedPreferences = EncryptedSharedPreferences.create(
+                    "encrypted_key-values",
+                    masterKeyAlias,
+                    getApplicationContext(),
+                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            );
 
 
-    }
+            ((EditText) findViewById(R.id.passEditText)).setText(sharedPreferences.getString(recievedIp, ""));
 
-    @Override
-    protected void onPause() {
-
-        super.onPause();
-
-       /* EditText ipEditText = findViewById(R.id.ipEditText);
-        String ip = ipEditText.getText().toString();
-
-        EditText passEditText = findViewById(R.id.passEditText);
-        String pass = passEditText.getText().toString();
-
-        SharedPreferences sharedPreferences = getSharedPreferences("savedValues",MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-
-        myEdit.putString("ip", ip);
-        myEdit.putString("pass", pass);
-
-        myEdit.commit();*/
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sendUp(View view){
@@ -103,6 +98,7 @@ public class SteerActivity extends AppCompatActivity {
 
         EditText passEditText = findViewById(R.id.passEditText);
         String pass = passEditText.getText().toString();
+        System.out.println(pass);
 
         if(recievedIp != ""){
             String webPage = "http://" + recievedIp + "/axis-cgi/com/ptz.cgi?" + params;
