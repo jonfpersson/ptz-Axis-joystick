@@ -9,20 +9,20 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/darkBlack"
+        android:background="@color/lightBlack"
         tools:context=".SteerActivity">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        <VideoView
+            android:id="@+id/videoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
             android:layout_marginTop="@dimen/generalSpacing"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_yellow" />
+            />
 
         <TextView
             android:id="@+id/ipView"
@@ -37,7 +37,7 @@
             android:textColor="@color/softGrey"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/videoLayout" />
 
         <EditText
             android:id="@+id/passEditText"

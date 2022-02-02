@@ -5,6 +5,7 @@ import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKeys;
 
 import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,10 +13,15 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.concurrent.ExecutionException;
 
 public class SteerActivity extends AppCompatActivity {
+    String ERROR_MESSAGE = "Error, Could not send CGI request";
     public String recievedIp;
+    private String PTZPassword;
+    CGISender cgiSender;
+
+    //TODO Add re-saving of password upon exit
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,20 +33,22 @@ public class SteerActivity extends AppCompatActivity {
         if(recievedIp != null)
             ipView.setText(recievedIp);
 
-        try {
+        readEncryptedCredentials();
+        cgiSender = new CGISender(recievedIp, PTZPassword);
+    }
 
+    public void readEncryptedCredentials(){
+        try {
             String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
             SharedPreferences sharedPreferences = EncryptedSharedPreferences.create(
                     "encrypted_key-values",
                     masterKeyAlias,
                     getApplicationContext(),
                     EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            );
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM);
 
-
-            ((EditText) findViewById(R.id.passEditText)).setText(sharedPreferences.getString(recievedIp, ""));
-
+            PTZPassword = sharedPreferences.getString(recievedIp, "");
+            ((EditText) findViewById(R.id.passEditText)).setText(PTZPassword);
         } catch (GeneralSecurityException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -49,71 +57,63 @@ public class SteerActivity extends AppCompatActivity {
     }
 
     public void sendUp(View view){
-        sendCGI("move=up");
-
+        cgiSender.setParams("move=up");
+        if(!cgiSender.sendCGIRequest())
+            System.out.println(ERROR_MESSAGE);
     }
 
     public void sendLeft(View view){
-        sendCGI("move=left");
-
+        cgiSender.setParams("move=left");
+        if(!cgiSender.sendCGIRequest())
+            System.out.println(ERROR_MESSAGE);
     }
 
     public void sendRight(View view){
-        sendCGI("move=right");
-
+        cgiSender.setParams("move=right");
+        if(!cgiSender.sendCGIRequest())
+            System.out.println(ERROR_MESSAGE);
     }
 
     public void sendDown(View view){
-        sendCGI("move=down");
-
+        cgiSender.setParams("move=down");
+        if(!cgiSender.sendCGIRequest())
+            System.out.println(ERROR_MESSAGE);
     }
 
     public void sendPan(View view){
-        EditText tiltEditText = findViewById(R.id.absPan);
-        String pan = tiltEditText.getText().toString();
-        sendCGI("pan=" + pan);
+        String pan = ((EditText) findViewById(R.id.absPan)).getText().toString();
+
+        cgiSender.setParams("pan=" + pan);
+        if(!cgiSender.sendCGIRequest())
+            System.out.println(ERROR_MESSAGE);
     }
 
     public void sendTilt(View view){
-        EditText tiltEditText = findViewById(R.id.absTilt);
-        String tilt = tiltEditText.getText().toString();
-        sendCGI("tilt=" + tilt);
+        String tilt = ((EditText) findViewById(R.id.absTilt)).getText().toString();
+
+        cgiSender.setParams("tilt=" + tilt);
+        if(!cgiSender.sendCGIRequest())
+            System.out.println(ERROR_MESSAGE);
     }
 
     public void sendCustom(View view){
-        EditText customCommand = findViewById(R.id.customCGI);
-        String cus = customCommand.getText().toString();
-        sendCGI(cus);
+        String cus = ((EditText) findViewById(R.id.customCGI)).getText().toString();
+
+        cgiSender.setParams(cus);
+        if(!cgiSender.sendCGIRequest())
+            System.out.println(ERROR_MESSAGE);
     }
 
     public void zoomIn(View view){
-        sendCGI("rzoom=" + "+200");
+        cgiSender.setParams("rzoom=" + "+200");
+        if(!cgiSender.sendCGIRequest())
+            System.out.println(ERROR_MESSAGE);
     }
 
     public void zoomOut(View view){
-        sendCGI("rzoom=" + "-200");
+        cgiSender.setParams("rzoom=" + "-200");
+        if(!cgiSender.sendCGIRequest())
+            System.out.println(ERROR_MESSAGE);
     }
 
-    public void sendCGI(String params){
-
-        EditText passEditText = findViewById(R.id.passEditText);
-        String pass = passEditText.getText().toString();
-        System.out.println(pass);
-
-        if(recievedIp != ""){
-            String webPage = "http://" + recievedIp + "/axis-cgi/com/ptz.cgi?" + params;
-
-            String result;
-            HttpGetRequest getRequest = new HttpGetRequest();
-
-            try {
-                result = getRequest.execute(webPage, pass).get();
-                System.out.println(result);
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

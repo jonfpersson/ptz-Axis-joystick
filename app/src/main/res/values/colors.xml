@@ -6,5 +6,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="softGrey">#D2D2CF</color>
-    <color name="darkBlack">#161616</color>
+    <color name="lightBlack">#161616</color>
 </resources>

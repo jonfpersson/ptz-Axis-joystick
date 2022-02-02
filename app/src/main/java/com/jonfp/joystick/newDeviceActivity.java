@@ -24,15 +24,16 @@ public class newDeviceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_device);
 
+        EditText ipEditText = findViewById(R.id.ipView);
+        EditText nickEditText = findViewById(R.id.nickEditText);
+
+
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 try {
-                    EditText ipEditText = findViewById(R.id.ipView);
-                    EditText nickEditText = findViewById(R.id.nickEditText);
-
                     String ip = ipEditText.getText().toString();
                     String nickname = nickEditText.getText().toString();
 
@@ -52,10 +53,8 @@ public class newDeviceActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         });
-
     }
 
     public void createEncryptedStorage(String ip){
@@ -82,5 +81,4 @@ public class newDeviceActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
 }

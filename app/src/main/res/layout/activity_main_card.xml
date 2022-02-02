@@ -31,7 +31,7 @@
         android:id="@+id/linlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/darkBlack"
+        android:background="@color/lightBlack"
         android:orientation="vertical">
 
 
