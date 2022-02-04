@@ -12,16 +12,15 @@
         android:background="@color/lightBlack"
         tools:context=".SteerActivity">
 
-        <VideoView
+        <ImageView
             android:id="@+id/videoLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            android:layout_marginTop="@dimen/generalSpacing"
-
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="65dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/icon_yellow"
             />
 
         <TextView
@@ -39,24 +38,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/videoLayout" />
 
-        <EditText
-            android:id="@+id/passEditText"
+        <com.google.android.material.textfield.TextInputLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/passwordLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_marginStart="@dimen/setButtonSpacing"
-            android:layout_marginTop="@dimen/setButtonSpacing"
-            android:layout_marginEnd="@dimen/setButtonSpacing"
-
-            android:hint="Enter PTZ password"
-            android:inputType="textPassword"
-            android:minHeight="50dp"
-            android:backgroundTint="@color/ic_launcher_background"
-            android:textColorHint="@color/softGrey"
-            android:textColor="@color/white"
+            app:passwordToggleEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ipView" />
+            app:layout_constraintTop_toBottomOf="@+id/ipView"
+
+            >
+            <EditText
+                android:id="@+id/passEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="@dimen/setButtonSpacing"
+                android:layout_marginTop="@dimen/setButtonSpacing"
+                android:layout_marginEnd="@dimen/setButtonSpacing"
+
+                android:hint="PTZ password"
+                android:inputType="textPassword"
+                android:minHeight="50dp"
+                android:backgroundTint="@color/ic_launcher_background"
+                android:textColorHint="@color/lightBlack"
+                android:textColor="@color/lightBlack"
+                android:enabled="false"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
@@ -187,7 +198,7 @@
             android:layout_marginTop="@dimen/generalSpacing"
             app:layout_constraintEnd_toEndOf="@+id/btnDown"
             app:layout_constraintStart_toStartOf="@+id/btnDown"
-            app:layout_constraintTop_toBottomOf="@+id/passEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordLayout" />
 
         <Button
             android:id="@+id/btnRight"

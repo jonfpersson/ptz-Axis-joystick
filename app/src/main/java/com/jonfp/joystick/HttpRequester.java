@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HttpRequester extends AsyncTask<String, Void, String> {
-    public static final String REQUEST_METHOD = "GET";
+    private static final String REQUEST_METHOD = "GET";
 
     @Override
     protected String doInBackground(String... params){

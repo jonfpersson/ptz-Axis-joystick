@@ -3,12 +3,12 @@ package com.jonfp.joystick;
 import java.util.concurrent.ExecutionException;
 
 public class CGISender {
-    String ipAdress;
-    String cgiParams;
-    String PTZPassword;
+    private String ipAddress;
+    private String cgiParams;
+    private String PTZPassword;
 
-    public CGISender(String ipAdress, String PTZPassword) {
-        this.ipAdress = ipAdress;
+    public CGISender(String ipAddress, String PTZPassword) {
+        this.ipAddress = ipAddress;
         this.PTZPassword = PTZPassword;
     }
 
@@ -17,10 +17,10 @@ public class CGISender {
     }
 
     public boolean sendCGIRequest() {
-        if (ipAdress.isEmpty() || cgiParams.isEmpty() || PTZPassword.isEmpty())
+        if (ipAddress.isEmpty() || cgiParams.isEmpty() || PTZPassword.isEmpty())
             return false;
 
-        String webPage = "http://" + ipAdress + "/axis-cgi/com/ptz.cgi?" + cgiParams;
+        String webPage = "http://" + ipAddress + "/axis-cgi/com/ptz.cgi?" + cgiParams;
         HttpRequester getRequest = new HttpRequester();
 
         try {

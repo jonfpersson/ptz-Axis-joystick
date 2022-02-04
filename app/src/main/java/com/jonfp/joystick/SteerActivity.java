@@ -16,7 +16,7 @@ import java.security.GeneralSecurityException;
 
 public class SteerActivity extends AppCompatActivity {
     String ERROR_MESSAGE = "Error, Could not send CGI request";
-    public String recievedIp;
+    public String receivedIp;
     private String PTZPassword;
     CGISender cgiSender;
 
@@ -27,14 +27,15 @@ public class SteerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_steer);
 
-        recievedIp = getIntent().getStringExtra("IP-ADRESS");
+        receivedIp = getIntent().getStringExtra("IP-ADDRESS");
         TextView ipView = findViewById(R.id.ipView);
 
-        if(recievedIp != null)
-            ipView.setText(recievedIp);
+        if(receivedIp != null)
+            ipView.setText(receivedIp);
 
         readEncryptedCredentials();
-        cgiSender = new CGISender(recievedIp, PTZPassword);
+        cgiSender = new CGISender(receivedIp, PTZPassword);
+
     }
 
     public void readEncryptedCredentials(){
@@ -47,7 +48,8 @@ public class SteerActivity extends AppCompatActivity {
                     EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
                     EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM);
 
-            PTZPassword = sharedPreferences.getString(recievedIp, "");
+            PTZPassword = sharedPreferences.getString(receivedIp, "");
+
             ((EditText) findViewById(R.id.passEditText)).setText(PTZPassword);
         } catch (GeneralSecurityException e) {
             e.printStackTrace();

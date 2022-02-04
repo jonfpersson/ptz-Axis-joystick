@@ -1,35 +1,25 @@
 package com.jonfp.joystick;
 
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Arrays;
-
 public class MainCardActivity extends AppCompatActivity {
-    Context context;
-    CardView cardview;
-    ViewGroup.LayoutParams layoutparams;
-    TextView textview;
-    LinearLayout linearLayout;
+    private Context context;
+    private CardView cardview;
+    private ViewGroup.LayoutParams layoutparams;
+    private TextView textview;
+    private LinearLayout linearLayout;
+    private LayoutHandler layoutHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +29,8 @@ public class MainCardActivity extends AppCompatActivity {
         linearLayout = (LinearLayout)findViewById(R.id.linlay);
         context = getApplicationContext();
 
-        readLayout();
+        addDevicesToActivity();
+
     }
 
     public void addNewDevice (View view){
@@ -52,30 +43,23 @@ public class MainCardActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void readLayout(){
-        String readData = "";
+    public void addDevicesToActivity(){
 
-        try {
-            int temp;
-            FileInputStream inputStream = openFileInput("mainLayout.joy");
+        layoutHandler = new LayoutHandler(context, linearLayout);
+        String[] amountOfCards = layoutHandler.read();
 
-            while( (temp = inputStream.read()) != -1){
-                readData = readData + Character.toString((char) temp);
-            }
+        if(amountOfCards == null)
+            return;
 
-            inputStream.close();
-            String[] amountOfCards = readData.split("\\s+");
+        for(int i = 0; i < amountOfCards.length; i++){
+            String[] values = amountOfCards[i].split(";");
 
-            if((readData.equals("")) || readData == null)
-                return;
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainCardActivity.this);
 
-            for(int i = 0; i < amountOfCards.length; i++){
-                String[] values = amountOfCards[i].split(";");
-                PTZCard ptz = new PTZCard(values[0], values[1], context, linearLayout);
-            }
+            PTZCard ptz = new PTZCard(values[0], values[1], context, amountOfCards, alertDialog);
+            ptz.addDevice(linearLayout);
 
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
     }
 }
