@@ -14,3 +14,6 @@ If this project is used, please cite me and the project as source.
 
 ## Credits
 <a href="https://www.flaticon.com/free-icons/security-camera" title="security camera icons">Security camera icons created by Freepik - Flaticon</a>
+
+## Integrity
+Passwords for the cameras are stored locally and are never transmitted to a third party.
