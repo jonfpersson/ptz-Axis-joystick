@@ -37,11 +37,12 @@ public class LayoutHandler {
 
             amountOfCards = readData.split("\\s+");
 
+            return amountOfCards;
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return amountOfCards;
+        return null;
     }
 
 

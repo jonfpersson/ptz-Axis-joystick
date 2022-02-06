@@ -20,8 +20,6 @@ public class SteerActivity extends AppCompatActivity {
     private String PTZPassword;
     CGISender cgiSender;
 
-    //TODO Add re-saving of password upon exit
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +33,6 @@ public class SteerActivity extends AppCompatActivity {
 
         readEncryptedCredentials();
         cgiSender = new CGISender(receivedIp, PTZPassword);
-
     }
 
     public void readEncryptedCredentials(){

@@ -27,7 +27,6 @@ public class newDeviceActivity extends AppCompatActivity {
         EditText ipEditText = findViewById(R.id.ipView);
         EditText nickEditText = findViewById(R.id.nickEditText);
 
-
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
