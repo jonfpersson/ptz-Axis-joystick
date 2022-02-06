@@ -2,6 +2,7 @@ package com.jonfp.joystick;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,14 +32,12 @@ public class PTZCard {
     private String ip;
     private Context context;
     String[] amountOfCards;
-    AlertDialog.Builder alertDialog;
 
-    public PTZCard(String name, String ip, Context context, String[] amountOfCards, AlertDialog.Builder alertDialog){
+    public PTZCard(String name, String ip, Context context, String[] amountOfCards){
         this.amountOfCards = amountOfCards;
         this.name = name;
         this.ip = ip;
         this.context = context;
-        this.alertDialog = alertDialog;
 
     }
 
@@ -78,21 +77,19 @@ public class PTZCard {
 
         View.OnLongClickListener olcl = new View.OnLongClickListener() {
             public boolean onLongClick(View v) {
+                new AlertDialog.Builder(context)
+                        .setTitle("Delete PTZ")
+                        .setMessage("Are you sure you want to delete this PTZ?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                removeDevice(name + ";" + ip);
+                            }
+                        })
 
-
-                alertDialog.setTitle("Delete entry");
-                alertDialog.setMessage("Are you sure you want to delete this entry?");
-                // Specifying a listener allows you to take an action before dismissing the dialog.
-                // The dialog is automatically dismissed when a dialog button is clicked.
-                alertDialog.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        removeDevice(name + ";" + ip);
-                    }
-                });
-                alertDialog.setNegativeButton(android.R.string.no, null);
-                alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
-                alertDialog.show();
-
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
                 return false;
             }
         };
@@ -112,10 +109,8 @@ public class PTZCard {
         try {
             fOut = context.openFileOutput("mainLayout.joy", Context.MODE_PRIVATE);
             for(int i = 0; i < list.size(); i++){
-
                 fOut.write((list.get(i) + " ").getBytes());
             }
-
 
             fOut.close();
 
@@ -125,10 +120,10 @@ public class PTZCard {
             e.printStackTrace();
         }
 
-        Intent intent = new Intent(context, MainCardActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
 
+        Intent intent = ((Activity)(context)).getIntent();
+        ((Activity)(context)).finish();
+        ((Activity)(context)).startActivity(intent);
     }
 }
 

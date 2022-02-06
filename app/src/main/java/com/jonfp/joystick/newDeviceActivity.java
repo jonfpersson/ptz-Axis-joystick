@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKeys;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,10 +34,19 @@ public class newDeviceActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String ip = ipEditText.getText().toString();
+                String nickname = nickEditText.getText().toString();
+
+                if (ip.isEmpty()|| nickname.isEmpty()){
+                    new AlertDialog.Builder(newDeviceActivity.this)
+                            .setTitle("Incorrect fields")
+                            .setMessage("Be sure to enter all fields correctly")
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                    return;
+                }
 
                 try {
-                    String ip = ipEditText.getText().toString();
-                    String nickname = nickEditText.getText().toString();
 
                     //Write layout in internal storage as file
                     FileOutputStream fOut = openFileOutput("mainLayout.joy", MODE_APPEND);
@@ -46,6 +58,8 @@ public class newDeviceActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(newDeviceActivity.this, MainCardActivity.class);
                     startActivity(intent);
+                    finish();
+
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();

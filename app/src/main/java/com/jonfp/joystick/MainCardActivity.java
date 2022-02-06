@@ -29,8 +29,8 @@ public class MainCardActivity extends AppCompatActivity {
         linearLayout = (LinearLayout)findViewById(R.id.linlay);
         context = getApplicationContext();
 
+        context = MainCardActivity.this;
         addDevicesToActivity();
-
     }
 
     public void addNewDevice (View view){
@@ -44,7 +44,6 @@ public class MainCardActivity extends AppCompatActivity {
     }
 
     public void addDevicesToActivity(){
-
         layoutHandler = new LayoutHandler(context, linearLayout);
         String[] amountOfCards = layoutHandler.read();
 
@@ -54,9 +53,7 @@ public class MainCardActivity extends AppCompatActivity {
         for(int i = 0; i < amountOfCards.length; i++){
             String[] values = amountOfCards[i].split(";");
 
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainCardActivity.this);
-
-            PTZCard ptz = new PTZCard(values[0], values[1], context, amountOfCards, alertDialog);
+            PTZCard ptz = new PTZCard(values[0], values[1], context, amountOfCards);
             ptz.addDevice(linearLayout);
 
         }

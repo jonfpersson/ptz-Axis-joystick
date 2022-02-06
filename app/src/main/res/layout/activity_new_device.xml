@@ -24,63 +24,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/nickEditText"
+    <com.google.android.material.textfield.TextInputLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/nicknameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="32dp"
-
-        android:hint="Enter nickname"
-        android:inputType="textPersonName"
-        android:minHeight="50dp"
-
-        android:backgroundTint="@color/ic_launcher_background"
-        android:textColorHint="@color/softGrey"
-        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        >
+        <EditText
+            android:id="@+id/nickEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    <EditText
-        android:id="@+id/ipView"
+            android:layout_marginStart="@dimen/setButtonSpacing"
+            android:layout_marginTop="@dimen/setButtonSpacing"
+            android:layout_marginEnd="@dimen/setButtonSpacing"
+
+            android:hint="Enter nickname"
+            android:minHeight="50dp"
+            android:backgroundTint="@color/ic_launcher_background"
+            android:textColorHint="@color/lightBlack"
+            android:textColor="@color/lightBlack"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ipViewLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="32dp"
-
-        android:hint="Enter ip"
-
-        android:minHeight="50dp"
-        android:backgroundTint="@color/ic_launcher_background"
-        android:textColorHint="@color/softGrey"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nickEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/nicknameLayout"
+        >
+        <EditText
+            android:id="@+id/ipView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    <EditText
-        android:id="@+id/passView"
+            android:layout_marginStart="@dimen/setButtonSpacing"
+            android:layout_marginTop="@dimen/setButtonSpacing"
+            android:layout_marginEnd="@dimen/setButtonSpacing"
+
+            android:hint="Enter ip"
+            android:minHeight="50dp"
+            android:backgroundTint="@color/ic_launcher_background"
+            android:textColorHint="@color/lightBlack"
+            android:textColor="@color/lightBlack"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/passLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="32dp"
-
-        android:hint="Enter PTZ password"
-        android:inputType="textPassword"
-        android:minHeight="50dp"
-        android:backgroundTint="@color/ic_launcher_background"
-        android:textColorHint="@color/softGrey"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ipView" />
+        app:layout_constraintTop_toBottomOf="@+id/ipViewLayout"
+        >
+        <EditText
+            android:id="@+id/passView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            android:layout_marginStart="@dimen/setButtonSpacing"
+            android:layout_marginTop="@dimen/setButtonSpacing"
+            android:layout_marginEnd="@dimen/setButtonSpacing"
+
+            android:hint="Enter PTZ password"
+            android:inputType="textPassword"
+            android:minHeight="50dp"
+            android:backgroundTint="@color/ic_launcher_background"
+            android:textColorHint="@color/lightBlack"
+            android:textColor="@color/lightBlack"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
